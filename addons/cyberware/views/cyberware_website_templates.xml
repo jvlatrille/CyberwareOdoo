@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="cyberware_website_page">
+    <t t-name="cyberware.page">
+      <!-- Page web placeholder -->
+      <div class="oe_structure">
+        <h1>Cyberware page</h1>
+        <p>Page web en construction.</p>
+      </div>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- Groupe Client -->
+    <record id="cyberware_group_client" model="res.groups">
+      <field name="name">Client Cyberware</field>
+      <field name="category_id" ref="base.module_category_services_cyberware"/>
+      <!-- hérite des droits de base.group_user -->
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Groupe Charcudoc -->
+    <record id="cyberware_group_charcudoc" model="res.groups">
+      <field name="name">Charcudoc (Ripperdoc)</field>
+      <field name="category_id" ref="base.module_category_services_cyberware"/>
+      <!-- hérite aussi des droits user de base -->
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+      <!-- optionnel : tu peux rajouter admin/root dedans direct -->
+      <field name="users" eval="[(4, ref('base.user_admin')), (4, ref('base.user_root'))]"/>
+    </record>
+
+  </data>
+</odoo>

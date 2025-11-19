@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- Menu vide pour l’instant -->
+    <menuitem id="menu_cyberware_root" name="Cyberware"/>
+
+  </data>
+</odoo>
