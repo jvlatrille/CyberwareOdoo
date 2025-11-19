@@ -33,6 +33,7 @@ Bla bla bla
         'security/ir.model.access.csv',
 
         # Menus + vues backend
+        'views/cyberware_actions.xml',
         'views/cyberware_menu.xml',
         'views/cyberware_implant_views.xml',
         'views/cyberware_client_views.xml',

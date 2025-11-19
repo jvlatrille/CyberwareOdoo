@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- Action Implants -->
+    <record id="action_cyberware_implant" model="ir.actions.act_window">
+      <field name="name">Implants</field>
+      <field name="res_model">cyberware.implant</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action Clients -->
+    <record id="action_cyberware_client" model="ir.actions.act_window">
+      <field name="name">Clients</field>
+      <field name="res_model">cyberware.client</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

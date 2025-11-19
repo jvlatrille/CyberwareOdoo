@@ -2,8 +2,29 @@
 <odoo>
   <data>
 
-    <!-- Menu vide pour l’instant -->
-    <menuitem id="menu_cyberware_root" name="Cyberware"/>
+    <!-- Menu principal Cyberware -->
+    <menuitem
+      id="menu_cyberware_root"
+      name="Cyberware"
+      sequence="10"
+      web_icon="cyberware,static/description/icon.png"
+      groups="cyberware.cyberware_group_charcudoc"/>
+
+    <!-- Sous-menu : Implants -->
+    <menuitem
+      id="menu_cyberware_implant"
+      name="Implants"
+      parent="menu_cyberware_root"
+      action="action_cyberware_implant"
+      groups="cyberware.cyberware_group_charcudoc"/>
+
+    <!-- Sous-menu : Clients -->
+    <menuitem
+      id="menu_cyberware_client"
+      name="Clients"
+      parent="menu_cyberware_root"
+      action="action_cyberware_client"
+      groups="cyberware.cyberware_group_charcudoc"/>
 
   </data>
 </odoo>
