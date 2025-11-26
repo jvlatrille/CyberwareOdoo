@@ -28,7 +28,7 @@ Bla bla bla
     ],
     # always loaded
     'data': [
-        # Sécurité (ordre important)
+        # Sécurité
         'security/cyberware_security.xml',
         'security/ir.model.access.csv',
 
@@ -41,10 +41,13 @@ Bla bla bla
 
         # Templates / page web (QWeb)
         'views/cyberware_website_templates.xml',
+        
+        'demo/cyberware.manufacturer.csv',
+        'demo/cyberware.demo.xml',
+        'demo/cyberware.client.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
     ],
 }
 
