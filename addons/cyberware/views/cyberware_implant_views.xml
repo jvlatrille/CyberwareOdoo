@@ -7,10 +7,10 @@
       <field name="model">cyberware.implant</field>
       <field name="arch" type="xml">
         <list string="Implants">
-          <field name="nom_implant"/>
-          <field name="type_implant"/>
-          <field name="rarete"/>
-          <field name="prix_euro"/>
+          <field name="nom_implant" />
+          <field name="type_implant" />
+          <field name="rarete" />
+          <field name="prix_euro" />
         </list>
       </field>
     </record>
@@ -22,52 +22,80 @@
         <form string="Implant">
           <sheet>
             <group>
-              <field name="nom_implant"/>
-              <field name="description"/>
-              <field name="type_implant"/>
-              <field name="rarete"/>
-              <field name="emplacement"/>
-              <field name="prix_euro"/>
-              <field name="cout_essence"/>
-              <field name="image_implant" widget="image"/> </group>
+              <field name="nom_implant" />
+              <field name="description" />
+              <field name="type_implant" />
+              <field name="rarete" />
+              <field name="emplacement" />
+              <field name="prix_euro" />
+              <field name="cout_essence" />
+              <field name="image_implant" widget="image" />
+            </group>
           </sheet>
         </form>
       </field>
     </record>
 
     <record id="view_cyberware_implant_kanban" model="ir.ui.view">
-        <field name="name">cyberware.implant.kanban</field>
-        <field name="model">cyberware.implant</field>
-        <field name="arch" type="xml">
-            <kanban default_group_by="type_implant">
-                <field name="id"/>
-                <field name="nom_implant"/>
-                <field name="image_implant"/>
-                <field name="rarete"/>
-                <field name="prix_euro"/>
-                <field name="cout_essence"/>
-                
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="o_kanban_image">
-                                <img t-att-src="kanban_image('cyberware.implant', 'image_implant', record.id.raw_value)"/>
-                            </div>
-                            <div class="oe_kanban_details">
-                                <strong class="o_kanban_record_title">
-                                    <field name="nom_implant"/>
-                                </strong>
-                                <ul>
-                                    <li>Rareté: <field name="rarete"/></li>
-                                    <li>Prix: <field name="prix_euro"/> €</li>
-                                    <li>Coût: <field name="cout_essence"/></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
+      <field name="name">cyberware.implant.kanban</field>
+      <field name="model">cyberware.implant</field>
+      <field name="arch" type="xml">
+        <kanban default_group_by="type_implant">
+          <field name="id" />
+          <field name="nom_implant" />
+          <field name="image_implant" />
+          <field name="rarete" />
+          <field name="prix_euro" />
+          <field name="cout_essence" />
+
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img
+                    t-att-src="kanban_image('cyberware.implant', 'image_implant', record.id.raw_value)" />
+                </div>
+                <div class="oe_kanban_details">
+                  <strong class="o_kanban_record_title">
+                    <field name="nom_implant" />
+                  </strong>
+                  <ul>
+                    <li>Rareté: <field name="rarete" /></li>
+                    <li>Prix: <field name="prix_euro" /> €</li>
+                    <li>Coût: <field name="cout_essence" /></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record id="view_cyberware_implant_search" model="ir.ui.view">
+      <field name="name">cyberware.implant.search</field>
+      <field name="model">cyberware.implant</field>
+      <field name="arch" type="xml">
+        <search string="Recherche Implants">
+          <field name="nom_implant" />
+          <field name="description" />
+          <field name="prix_euro" />
+
+          <filter string="Légendaire" name="filter_legendaire"
+            domain="[('rarete', '=', 'légendaire')]" />
+          <filter string="Abordable (&lt; 10000€)" name="filter_cheap"
+            domain="[('prix_euro', '&lt;', 10000)]" />
+
+          <separator />
+          <filter string="Archivé" name="inactive" domain="[('actif', '=', False)]" />
+
+          <group expand="0" string="Regrouper par">
+            <filter string="Type d'implant" name="group_type" context="{'group_by': 'type_implant'}" />
+            <filter string="Rareté" name="group_rarity" context="{'group_by': 'rarete'}" />
+            <filter string="Emplacement" name="group_slot" context="{'group_by': 'emplacement'}" />
+          </group>
+        </search>
+      </field>
     </record>
 
   </data>

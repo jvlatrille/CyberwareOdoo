@@ -1,5 +1,8 @@
 id,name,description
-demo_manuf_arasaka,Arasaka,"Spécialisé dans la sécurité corporative et la banque."
-demo_manuf_militech,Militech,"Fournisseur d'armes et de véhicules militaires de haut niveau."
-demo_manuf_zetatech,Zetatech,"Spécialiste du matériel informatique et des neuroprocesseurs."
-demo_manuf_kiroshi,Kiroshi Optics,"Leader du marché des implants optiques."
+demo_manuf_arasaka,Arasaka,"Spécialisé dans la sécurité corporative, la banque et les implants de combat haut de gamme."
+demo_manuf_militech,Militech,"Fournisseur d'armes et de véhicules militaires de haut niveau. Robustesse avant tout."
+demo_manuf_zetatech,Zetatech,"Spécialiste du matériel informatique, des neuroprocesseurs et des interfaces de vol."
+demo_manuf_kiroshi,Kiroshi Optics,"Leader incontesté du marché des implants optiques."
+demo_manuf_biotechnica,Biotechnica,"Pionnier du génie génétique et des implants biologiques."
+demo_manuf_kangtao,Kang Tao,"Fabricant chinois spécialisé dans les armes intelligentes et la technologie de visée."
+demo_manuf_moore,Moore Technologies,"Spécialiste des implants de combat rapproché."
