@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <!-- Client : placeholder -->
+
+    <!-- LISTE -->
+    <record id="view_cyberware_client_list" model="ir.ui.view">
+      <field name="name">cyberware.client.list</field>
+      <field name="model">cyberware.client</field>
+      <field name="arch" type="xml">
+        <list string="Clients">
+          <field name="nom_client"/>
+          <field name="pseudo"/>
+          <field name="age"/>
+          <field name="essence_restante"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- FORMULAIRE -->
+    <record id="view_cyberware_client_form" model="ir.ui.view">
+      <field name="name">cyberware.client.form</field>
+      <field name="model">cyberware.client</field>
+      <field name="arch" type="xml">
+        <form string="Client">
+          <sheet>
+            <group>
+              <field name="nom_client"/>
+              <field name="pseudo"/>
+              <field name="date_naissance"/>
+              <field name="image_client"/>
+              <field name="niveau_essence_max"/>
+            </group>
+
+            <group string="Statistiques">
+              <field name="age" readonly="1"/>
+              <field name="essence_utilisee" readonly="1"/>
+              <field name="essence_restante" readonly="1"/>
+            </group>
+
+            <notebook>
+              <page string="Implants installés">
+                <field name="implant_ids" widget="many2many_tags"/>
+              </page>
+              <page string="Historique implantations">
+                <field name="implantation_ids"/>
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
   </data>
 </odoo>

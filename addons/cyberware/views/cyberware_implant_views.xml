@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <!-- Implant : placeholder -->
+
+    <!-- LISTE -->
+    <record id="view_cyberware_implant_list" model="ir.ui.view">
+      <field name="name">cyberware.implant.list</field>
+      <field name="model">cyberware.implant</field>
+      <field name="arch" type="xml">
+        <list string="Implants">
+          <field name="nom_implant"/>
+          <field name="type_implant"/>
+          <field name="rarete"/>
+          <field name="prix_euro"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- FORMULAIRE -->
+    <record id="view_cyberware_implant_form" model="ir.ui.view">
+      <field name="name">cyberware.implant.form</field>
+      <field name="model">cyberware.implant</field>
+      <field name="arch" type="xml">
+        <form string="Implant">
+          <sheet>
+            <group>
+              <field name="nom_implant"/>
+              <field name="description"/>
+              <field name="type_implant"/>
+              <field name="rarete"/>
+              <field name="emplacement"/>
+              <field name="prix_euro"/>
+              <field name="cout_essence"/>
+              <field name="image_implant"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
   </data>
 </odoo>
