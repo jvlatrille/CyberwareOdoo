@@ -2,18 +2,16 @@
 <odoo>
   <data>
 
-    <!-- Action Implants -->
     <record id="action_cyberware_implant" model="ir.actions.act_window">
       <field name="name">Implants</field>
       <field name="res_model">cyberware.implant</field>
-      <field name="view_mode">list,form</field>
+      <field name="view_mode">kanban,list,form</field>
     </record>
 
-    <!-- Action Clients -->
     <record id="action_cyberware_client" model="ir.actions.act_window">
       <field name="name">Clients</field>
       <field name="res_model">cyberware.client</field>
-      <field name="view_mode">list,form</field>
+      <field name="view_mode">kanban,list,form</field>
     </record>
 
   </data>

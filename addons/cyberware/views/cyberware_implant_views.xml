@@ -2,7 +2,6 @@
 <odoo>
   <data>
 
-    <!-- LISTE -->
     <record id="view_cyberware_implant_list" model="ir.ui.view">
       <field name="name">cyberware.implant.list</field>
       <field name="model">cyberware.implant</field>
@@ -16,7 +15,6 @@
       </field>
     </record>
 
-    <!-- FORMULAIRE -->
     <record id="view_cyberware_implant_form" model="ir.ui.view">
       <field name="name">cyberware.implant.form</field>
       <field name="model">cyberware.implant</field>
@@ -31,11 +29,45 @@
               <field name="emplacement"/>
               <field name="prix_euro"/>
               <field name="cout_essence"/>
-              <field name="image_implant"/>
-            </group>
+              <field name="image_implant" widget="image"/> </group>
           </sheet>
         </form>
       </field>
+    </record>
+
+    <record id="view_cyberware_implant_kanban" model="ir.ui.view">
+        <field name="name">cyberware.implant.kanban</field>
+        <field name="model">cyberware.implant</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="type_implant">
+                <field name="id"/>
+                <field name="nom_implant"/>
+                <field name="image_implant"/>
+                <field name="rarete"/>
+                <field name="prix_euro"/>
+                <field name="cout_essence"/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('cyberware.implant', 'image_implant', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="nom_implant"/>
+                                </strong>
+                                <ul>
+                                    <li>Rareté: <field name="rarete"/></li>
+                                    <li>Prix: <field name="prix_euro"/> €</li>
+                                    <li>Coût: <field name="cout_essence"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
     </record>
 
   </data>
