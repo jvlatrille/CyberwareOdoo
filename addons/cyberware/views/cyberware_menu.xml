@@ -26,5 +26,15 @@
       action="action_cyberware_client"
       groups="cyberware.cyberware_group_charcudoc"/>
 
+      <record id="action_open_website" model="ir.actions.act_url">
+        <field name="name">Voir le Site</field>
+        <field name="url">/cyberware/market</field>
+        <field name="target">self</field> </record>
+
+    <menuitem id="menu_cyberware_website"
+              name="Site Web"
+              parent="menu_cyberware_root" 
+              action="action_open_website"
+              sequence="30"/>
   </data>
 </odoo>

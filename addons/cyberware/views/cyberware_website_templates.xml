@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <template id="cyberware_website_page">
-    <t t-name="cyberware.page">
-      <!-- Page web placeholder -->
-      <div class="oe_structure">
-        <h1>Cyberware page</h1>
-        <p>Page web en construction.</p>
-      </div>
-    </t>
-  </template>
+    <data>
+        <template id="cyberware_market_page" name="Cyberware Market">
+            <t t-call="website.layout">
+                <div class="container mt-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-4 text-primary">Marché Noir Cyberware</h1>
+                        <p class="lead text-muted">Les meilleurs implants de Night City, livrés discrètement.</p>
+                    </div>
+
+                    <div class="row">
+                        <t t-foreach="implants" t-as="implant">
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-img-top text-center p-3 bg-light" style="height: 200px; overflow: hidden;">
+                                        <img t-if="implant.image_implant" 
+                                             t-att-src="image_data_uri(implant.image_implant)" 
+                                             class="img-fluid" style="max-height: 100%;"/>
+                                        <span t-else="" class="text-muted">Pas d'image</span>
+                                    </div>
+                                    
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark" t-field="implant.nom_implant"/>
+                                        
+                                        <span class="badge bg-info mb-2" t-field="implant.rarete"/>
+                                        <span class="badge bg-secondary mb-2" t-field="implant.type_implant"/>
+
+                                        <p class="card-text text-muted small" t-field="implant.description"/>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <h4 class="text-success mb-0">
+                                                <span t-field="implant.prix_euro"/> €
+                                            </h4>
+                                            <span class="text-danger small fw-bold">
+                                                -<span t-field="implant.cout_essence"/> Essence
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
 </odoo>
