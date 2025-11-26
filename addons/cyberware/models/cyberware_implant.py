@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class CyberwareImplant(models.Model):
     _name = "cyberware.implant"
@@ -38,6 +39,15 @@ class CyberwareImplant(models.Model):
     
     nb_implantations = fields.Integer("Nombre d'implantations", compute="_compute_nb_implantations", store=True)
 
+
+    @api.constrains('prix_euro', 'cout_essence')
+    def _check_valeurs_positives(self):
+        for implant in self:
+            if implant.prix_euro < 0:
+                raise ValidationError("Le prix d'un implant ne peut pas être négatif ! (sinon c'est pas ranta)")
+            if implant.cout_essence < 0:
+                raise ValidationError("Le coût en essence ne peut pas être négatif.")
+    
     @api.depends("implantation_ids")
     def _compute_nb_implantations(self):
         for enregistrement in self:
