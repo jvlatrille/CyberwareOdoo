@@ -6,3 +6,4 @@ from . import cyberware_manufacturer
 from . import cyberware_client
 from . import cyberware_implantation
 from . import res_users
+from . import res_partner

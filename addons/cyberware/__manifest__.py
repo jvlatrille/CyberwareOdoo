@@ -38,6 +38,7 @@ Bla bla bla
         'views/cyberware_implant_views.xml',
         'views/cyberware_client_views.xml',
         'views/cyberware_ripperdoc_views.xml',
+        'views/res_partner_views.xml',
 
         # Templates / page web (QWeb)
         'views/cyberware_website_templates.xml',
