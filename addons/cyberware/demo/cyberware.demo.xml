@@ -9,8 +9,9 @@
             <field name="emplacement">systeme</field>
             <field name="type_implant">neural</field>
             <field name="rarete">légendaire</field>
-            <field name="manufacturer_id" ref="demo_manuf_militech"/>
+            <field name="manufacturer_id" ref="demo_manuf_militech"/> <!-- Ici la réf des implants si jamais vous cherchez -->
             <field name="description">Ralentit le temps de 70%. Augmente les dégâts et les chances de critique.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/sandevistan.png"/>
         </record>
 
         <record id="demo_implant_kiroshi" model="cyberware.implant">
@@ -22,6 +23,7 @@
             <field name="rarete">epique</field>
             <field name="manufacturer_id" ref="demo_manuf_kiroshi"/>
             <field name="description">Permet de scanner les ennemis et de voir à travers les murs.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/kiroshi.png"/>
         </record>
 
         <record id="demo_implant_mantis" model="cyberware.implant">
@@ -33,6 +35,7 @@
             <field name="rarete">légendaire</field>
             <field name="manufacturer_id" ref="demo_manuf_arasaka"/>
             <field name="description">Lames rétractables mortelles pour le combat rapproché. Permet de bondir sur l'ennemi.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/mantis.png"/>
         </record>
 
         <record id="demo_implant_gorilla" model="cyberware.implant">
@@ -44,6 +47,7 @@
             <field name="rarete">epique</field>
             <field name="manufacturer_id" ref="demo_manuf_militech"/>
             <field name="description">Augmente considérablement la force physique. Permet de forcer les portes et d'écraser les crânes.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/gorilla.png"/>
         </record>
 
         <record id="demo_implant_monowire" model="cyberware.implant">
@@ -55,6 +59,7 @@
             <field name="rarete">rare</field>
             <field name="manufacturer_id" ref="demo_manuf_moore"/>
             <field name="description">Un fil moléculaire capable de trancher la chair et l'os à distance.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/monowire.png"/>
         </record>
 
         <record id="demo_implant_tendons" model="cyberware.implant">
@@ -66,6 +71,7 @@
             <field name="rarete">rare</field>
             <field name="manufacturer_id" ref="demo_manuf_militech"/>
             <field name="description">Permet d'effectuer un double saut dans les airs.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/tendons.png"/>
         </record>
 
         <record id="demo_implant_lynx" model="cyberware.implant">
@@ -77,6 +83,7 @@
             <field name="rarete">epique</field>
             <field name="manufacturer_id" ref="demo_manuf_zetatech"/>
             <field name="description">Réduit le bruit des pas de 50% pour une approche furtive.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/lynx.png"/>
         </record>
 
         <record id="demo_implant_kerenzikov" model="cyberware.implant">
@@ -88,6 +95,7 @@
             <field name="rarete">légendaire</field>
             <field name="manufacturer_id" ref="demo_manuf_zetatech"/>
             <field name="description">Permet de viser et tirer en esquivant. Ralentit le temps de 90% pendant une esquive.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/kerenzikov.png"/>
         </record>
 
         <record id="demo_implant_synaptic" model="cyberware.implant">
@@ -99,50 +107,7 @@
             <field name="rarete">commun</field>
             <field name="manufacturer_id" ref="demo_manuf_zetatech"/>
             <field name="description">Ralentit le temps de 25% quand un ennemi vous détecte.</field>
-        </record>
-
-        <record id="demo_implant_subdermal" model="cyberware.implant">
-            <field name="nom_implant">Subdermal Armor</field>
-            <field name="cout_essence">10</field>
-            <field name="prix_euro">2000.0</field>
-            <field name="emplacement">torse</field>
-            <field name="type_implant">armure</field>
-            <field name="rarete">commun</field>
-            <field name="manufacturer_id" ref="demo_manuf_militech"/>
-            <field name="description">Renforce la peau avec du plastique balistique. Augmente l'armure de 200.</field>
-        </record>
-
-        <record id="demo_implant_camo" model="cyberware.implant">
-            <field name="nom_implant">Optical Camo</field>
-            <field name="cout_essence">28</field>
-            <field name="prix_euro">22000.0</field>
-            <field name="emplacement">torse</field>
-            <field name="type_implant">armure</field>
-            <field name="rarete">légendaire</field>
-            <field name="manufacturer_id" ref="demo_manuf_arasaka"/>
-            <field name="description">Rend l'utilisateur quasi-invisible pendant 15 secondes.</field>
-        </record>
-
-        <record id="demo_implant_biomonitor" model="cyberware.implant">
-            <field name="nom_implant">Biomonitor</field>
-            <field name="cout_essence">4</field>
-            <field name="prix_euro">1500.0</field>
-            <field name="emplacement">systeme</field>
-            <field name="type_implant">interne</field>
-            <field name="rarete">commun</field>
-            <field name="manufacturer_id" ref="demo_manuf_biotechnica"/>
-            <field name="description">Restaure automatiquement 30% de santé quand elle tombe sous 15%.</field>
-        </record>
-
-        <record id="demo_implant_secondheart" model="cyberware.implant">
-            <field name="nom_implant">Second Heart</field>
-            <field name="cout_essence">45</field>
-            <field name="prix_euro">42000.0</field>
-            <field name="emplacement">systeme</field>
-            <field name="type_implant">interne</field>
-            <field name="rarete">légendaire</field>
-            <field name="manufacturer_id" ref="demo_manuf_biotechnica"/>
-            <field name="description">Ressuscite instantanément l'utilisateur avec 100% de santé si les PV tombent à 0.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/synaptic.png"/>
         </record>
 
         <record id="demo_implant_smartlink" model="cyberware.implant">
@@ -154,6 +119,55 @@
             <field name="rarete">rare</field>
             <field name="manufacturer_id" ref="demo_manuf_kangtao"/>
             <field name="description">Permet d'utiliser le module de ciblage intelligent des armes compatibles.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/smartlink.png"/>
+        </record>
+
+        <record id="demo_implant_subdermal" model="cyberware.implant">
+            <field name="nom_implant">Subdermal Armor</field>
+            <field name="cout_essence">10</field>
+            <field name="prix_euro">2000.0</field>
+            <field name="emplacement">torse</field>
+            <field name="type_implant">armure</field>
+            <field name="rarete">commun</field>
+            <field name="manufacturer_id" ref="demo_manuf_militech"/>
+            <field name="description">Renforce la peau avec du plastique balistique. Augmente l'armure de 200.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/subdermal.png"/>
+        </record>
+
+        <record id="demo_implant_camo" model="cyberware.implant">
+            <field name="nom_implant">Optical Camo</field>
+            <field name="cout_essence">28</field>
+            <field name="prix_euro">22000.0</field>
+            <field name="emplacement">torse</field>
+            <field name="type_implant">armure</field>
+            <field name="rarete">légendaire</field>
+            <field name="manufacturer_id" ref="demo_manuf_arasaka"/>
+            <field name="description">Rend l'utilisateur quasi-invisible pendant 15 secondes.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/camo.png"/>
+        </record>
+
+        <record id="demo_implant_biomonitor" model="cyberware.implant">
+            <field name="nom_implant">Biomonitor</field>
+            <field name="cout_essence">4</field>
+            <field name="prix_euro">1500.0</field>
+            <field name="emplacement">systeme</field>
+            <field name="type_implant">interne</field>
+            <field name="rarete">commun</field>
+            <field name="manufacturer_id" ref="demo_manuf_biotechnica"/>
+            <field name="description">Restaure automatiquement 30% de santé quand elle tombe sous 15%.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/biomonitor.png"/>
+        </record>
+
+        <record id="demo_implant_secondheart" model="cyberware.implant">
+            <field name="nom_implant">Second Heart</field>
+            <field name="cout_essence">45</field>
+            <field name="prix_euro">42000.0</field>
+            <field name="emplacement">systeme</field>
+            <field name="type_implant">interne</field>
+            <field name="rarete">légendaire</field>
+            <field name="manufacturer_id" ref="demo_manuf_biotechnica"/>
+            <field name="description">Ressuscite instantanément l'utilisateur avec 100% de santé si les PV tombent à 0.</field>
+            <field name="image_implant" type="base64" file="cyberware/static/img/secondheart.png"/>
         </record>
 
     </data>
