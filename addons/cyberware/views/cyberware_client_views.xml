@@ -64,7 +64,7 @@
                 <field name="age"/>
 
                 <templates>
-                    <t t-name="kanban-box">
+                    <t t-name="card">
                         <div class="oe_kanban_global_click">
                             <div class="o_kanban_image">
                                 <img t-att-src="kanban_image('cyberware.client', 'image_client', record.id.raw_value)" alt="Avatar"/>
