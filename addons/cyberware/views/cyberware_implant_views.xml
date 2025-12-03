@@ -28,6 +28,7 @@
               <field name="rarete" />
               <field name="emplacement" />
               <field name="prix_euro" />
+              <field name="manufacturer_id"/> <field name="description_fabricant" class="text-muted"/>
               <field name="cout_essence" />
               <field name="image_implant" widget="image" />
             </group>

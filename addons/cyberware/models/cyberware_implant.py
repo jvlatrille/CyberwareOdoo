@@ -30,6 +30,12 @@ class CyberwareImplant(models.Model):
     )
     image_implant = fields.Binary("Image")
 
+    # Champ Related : Va chercher la description dans la table Manufacturer via le lien manufacturer_id
+    description_fabricant = fields.Text(
+        string="Info Fabricant",
+        related="manufacturer_id.description",
+        readonly=True
+    )
     # --- AJOUTS POUR QUE LA DEMO FONCTIONNE ---
     # Il manquait ce champ pour lier au fabricant
     manufacturer_id = fields.Many2one("cyberware.manufacturer", string="Fabricant") 
