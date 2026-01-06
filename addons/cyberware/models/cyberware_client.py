@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import date
-
+from odoo.exceptions import ValidationError
 from odoo import models, fields, api
 
 
@@ -23,8 +23,30 @@ class CyberwareClient(models.Model):
         default=100,
         help="Limite théorique d'essence / humanité pour ce client.",
     )
+    
+    # Champ TEXTUEL
+    notes_medicales = fields.Text("Notes médicales / Allergies")
+    
+    # Champ SELECT
+    groupe_sanguin = fields.Selection([
+        ('a_pos', 'A+'),
+        ('a_neg', 'A-'),
+        ('b_pos', 'B+'),
+        ('b_neg', 'B-'),
+        ('o_pos', 'O+'),
+        ('o_neg', 'O-'),
+        ('ab_pos', 'AB+'),
+        ('ab_neg', 'AB-'),
+        ('synth', 'Synthétique'),
+    ], string="Groupe Sanguin", default='o_pos')
 
-    # Lien avec un utilisateur Odoo (pour les groupes client / login portail plus tard si tu veux)
+    # Champ RELATED
+    email_user = fields.Char(
+        string="Email (lié au compte)",
+        related="user_id.login",
+        readonly=True,
+        store=True
+    )
     user_id = fields.Many2one(
         "res.users",
         string="Utilisateur lié",
@@ -64,6 +86,29 @@ class CyberwareClient(models.Model):
         compute="_compute_essence_restante",
         store=True,
     )
+    
+    def action_controler_donnees(self):
+        """ Vérifie la cohérence des données du patient """
+        for record in self:
+            # Vérifier la surcharge
+            if record.essence_restante < 0:
+                raise ValidationError("DANGER : Le patient a dépassé sa limite de tolérance (Cyberpsychose imminente) !")
+
+            # Vérifier le groupe sanguin
+            if not record.groupe_sanguin:
+                 raise ValidationError("Merci de renseigner le groupe sanguin pour compléter le dossier.")
+        
+        # Si tout est OK, on affiche une notif
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': 'Conforme',
+                'message': 'Le dossier du patient est valide.',
+                'type': 'success',
+                'sticky': False,
+            }
+        }
 
     @api.depends("date_naissance")
     def _compute_age(self):
