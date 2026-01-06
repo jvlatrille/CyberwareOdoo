@@ -28,7 +28,8 @@
               <field name="rarete" />
               <field name="emplacement" />
               <field name="prix_euro" />
-              <field name="manufacturer_id"/> <field name="description_fabricant" class="text-muted"/>
+              <field name="manufacturer_id" />
+              <field name="description_fabricant" class="text-muted" />
               <field name="cout_essence" />
               <field name="image_implant" widget="image" />
             </group>
@@ -53,7 +54,9 @@
             <t t-name="card">
               <div class="oe_kanban_global_click">
                 <div class="o_kanban_image">
-                  <img t-att-src="'/web/image?model=cyberware.implant&amp;field=image_implant&amp;id=' + record.id.raw_value" alt="Implant"/>
+                  <img
+                    t-att-src="'/web/image?model=cyberware.implant&amp;field=image_implant&amp;id=' + record.id.raw_value"
+                    style="width: 85px; height: 85px; object-fit: cover;" alt="Implant" />
                 </div>
                 <div class="oe_kanban_details">
                   <strong class="o_kanban_record_title">

@@ -12,53 +12,64 @@ class CyberwareClient(models.Model):
 
     actif = fields.Boolean("Actif ?", default=True)
 
-    nom_client = fields.Char("Nom du client", required=True)
-    pseudo = fields.Char("Pseudo / alias")
-    date_naissance = fields.Date("Date de naissance")
-
-    image_client = fields.Binary("Avatar")
+    notes_medicales = fields.Text("Notes médicales / Allergies")  # Champ TEXTUEL
 
     niveau_essence_max = fields.Integer(
         "Essence maximale",
         default=100,
         help="Limite théorique d'essence / humanité pour ce client.",
-    )
-    
-    # Champ TEXTUEL
-    notes_medicales = fields.Text("Notes médicales / Allergies")
-    
-    # Champ SELECT
-    groupe_sanguin = fields.Selection([
-        ('a_pos', 'A+'),
-        ('a_neg', 'A-'),
-        ('b_pos', 'B+'),
-        ('b_neg', 'B-'),
-        ('o_pos', 'O+'),
-        ('o_neg', 'O-'),
-        ('ab_pos', 'AB+'),
-        ('ab_neg', 'AB-'),
-        ('synth', 'Synthétique'),
-    ], string="Groupe Sanguin", default='o_pos')
+    )  # Champ NUMÉRIQUE
 
-    # Champ RELATED
+    date_naissance = fields.Date("Date de naissance")  # Champ DATE
+
+    image_client = fields.Binary("Avatar")  # Champ IMAGE
+
+    groupe_sanguin = fields.Selection(
+        [
+            ("a_pos", "A+"),
+            ("a_neg", "A-"),
+            ("b_pos", "B+"),
+            ("b_neg", "B-"),
+            ("o_pos", "O+"),
+            ("o_neg", "O-"),
+            ("ab_pos", "AB+"),
+            ("ab_neg", "AB-"),
+            ("synth", "Synthétique"),
+        ],
+        string="Groupe Sanguin",
+        default="o_pos",
+    )  # Champ SELECT
+
+    age = fields.Integer(
+        "Âge",
+        compute="_compute_age",
+        store=True,
+    )  # Champs calculés
+
     email_user = fields.Char(
         string="Email (lié au compte)",
         related="user_id.login",
         readonly=True,
-        store=True
-    )
+        store=True,
+    )  # Champ RELATED
+
+    nom_client = fields.Char("Nom du client", required=True)
+    pseudo = fields.Char("Pseudo / alias")
+
     user_id = fields.Many2one(
         "res.users",
         string="Utilisateur lié",
     )
 
     # Relations
+    # RELATION 1-N avec les implantations
     implantation_ids = fields.One2many(
         "cyberware.implantation",
         "client_id",
         string="Historique des implantations",
     )
 
+    # RELATION N-N avec les implants
     implant_ids = fields.Many2many(
         "cyberware.implant",
         "cyberware_client_implant_rel",
@@ -66,13 +77,6 @@ class CyberwareClient(models.Model):
         "implant_id",
         string="Implants installés",
         help="Implants actuellement présents chez le client.",
-    )
-
-    # Champs calculés
-    age = fields.Integer(
-        "Âge",
-        compute="_compute_age",
-        store=True,
     )
 
     essence_utilisee = fields.Integer(
@@ -86,28 +90,32 @@ class CyberwareClient(models.Model):
         compute="_compute_essence_restante",
         store=True,
     )
-    
+
     def action_controler_donnees(self):
-        """ Vérifie la cohérence des données du patient """
+        """Vérifie la cohérence des données du patient"""
         for record in self:
             # Vérifier la surcharge
             if record.essence_restante < 0:
-                raise ValidationError("DANGER : Le patient a dépassé sa limite de tolérance (Cyberpsychose imminente) !")
+                raise ValidationError(
+                    "DANGER : Le patient a dépassé sa limite de tolérance (Cyberpsychose imminente) !"
+                )
 
             # Vérifier le groupe sanguin
             if not record.groupe_sanguin:
-                 raise ValidationError("Merci de renseigner le groupe sanguin pour compléter le dossier.")
-        
+                raise ValidationError(
+                    "Merci de renseigner le groupe sanguin pour compléter le dossier."
+                )
+
         # Si tout est OK, on affiche une notif
         return {
-            'type': 'ir.actions.client',
-            'tag': 'display_notification',
-            'params': {
-                'title': 'Conforme',
-                'message': 'Le dossier du patient est valide.',
-                'type': 'success',
-                'sticky': False,
-            }
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": "Conforme",
+                "message": "Le dossier du patient est valide.",
+                "type": "success",
+                "sticky": False,
+            },
         }
 
     @api.depends("date_naissance")
@@ -126,7 +134,11 @@ class CyberwareClient(models.Model):
             else:
                 client.age = 0
 
-    @api.depends("implantation_ids", "implantation_ids.implant_id", "implantation_ids.implant_id.cout_essence")
+    @api.depends(
+        "implantation_ids",
+        "implantation_ids.implant_id",
+        "implantation_ids.implant_id.cout_essence",
+    )
     def _compute_essence_utilisee(self):
         for client in self:
             essence_totale = 0
@@ -138,6 +150,8 @@ class CyberwareClient(models.Model):
     def _compute_essence_restante(self):
         for client in self:
             if client.niveau_essence_max:
-                client.essence_restante = client.niveau_essence_max - (client.essence_utilisee or 0)
+                client.essence_restante = client.niveau_essence_max - (
+                    client.essence_utilisee or 0
+                )
             else:
                 client.essence_restante = 0

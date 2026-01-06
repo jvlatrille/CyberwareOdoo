@@ -23,10 +23,10 @@
       <field name="arch" type="xml">
         <form string="Client">
           <header>
-              <button name="action_controler_donnees" 
-                      string="Vérifier le dossier" 
-                      type="object" 
-                      class="oe_highlight"/>
+            <button name="action_controler_donnees"
+              string="Vérifier le dossier"
+              type="object"
+              class="oe_highlight" />
           </header>
           <sheet>
             <group>
@@ -38,10 +38,10 @@
             </group>
 
             <group string="Données Médicales">
-                <field name="groupe_sanguin"/>
-                <field name="email_user"/>
+              <field name="groupe_sanguin" />
+              <field name="email_user" />
             </group>
-            
+
             <group string="Statistiques">
               <field name="age" readonly="1" />
               <field name="essence_utilisee" readonly="1" />
@@ -80,7 +80,8 @@
                 <div class="o_kanban_image">
                   <img
                     t-attf-src="/web/image?model=cyberware.client&amp;id=#{record.id.raw_value}&amp;field=image_client"
-                    class="o_kanban_image_fill_left o_kanban_image_full"
+                    class="o_kanban_image_fill_left o_kanban_image_full" 
+                    style="width: 85px; height: 85px; object-fit: cover;"
                     alt="Avatar" />
                 </div>
 

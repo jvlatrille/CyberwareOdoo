@@ -6,13 +6,12 @@ class CyberwareImplant(models.Model):
     _name = "cyberware.implant"
     _description = "Implants cyberware"
     _order = "rarete, nom_implant"
-    _rec_name = "nom_implant"  # INDISPENSABLE car vous n'avez pas de champ "name"
+    _rec_name = "nom_implant"
 
     actif = fields.Boolean("Actif ?", default=True)
     nom_implant = fields.Char("Nom de l'implant", required=True)
     description = fields.Text("Description")
     
-    # Vos champs existants...
     type_implant = fields.Selection(
         [("optique", "Optique"), ("neural", "Neural"), ("armure", "Armure"), 
          ("membre", "Membre cybernétique"), ("interne", "Organe interne")],
@@ -30,14 +29,11 @@ class CyberwareImplant(models.Model):
     )
     image_implant = fields.Binary("Image")
 
-    # Champ Related : Va chercher la description dans la table Manufacturer via le lien manufacturer_id
     description_fabricant = fields.Text(
         string="Info Fabricant",
         related="manufacturer_id.description",
         readonly=True
     )
-    # --- AJOUTS POUR QUE LA DEMO FONCTIONNE ---
-    # Il manquait ce champ pour lier au fabricant
     manufacturer_id = fields.Many2one("cyberware.manufacturer", string="Fabricant") 
     
     charcudoc_id = fields.Many2one("res.users", string="Charcudoc créateur", default=lambda self: self.env.user)
@@ -48,6 +44,7 @@ class CyberwareImplant(models.Model):
 
     @api.constrains('prix_euro', 'cout_essence')
     def _check_valeurs_positives(self):
+        """Fonction de contrainte pour vérifier que le prix et le coût en essence sont positifs."""
         for implant in self:
             if implant.prix_euro < 0:
                 raise ValidationError("Le prix d'un implant ne peut pas être négatif ! (sinon c'est pas ranta)")

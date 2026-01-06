@@ -7,6 +7,7 @@
             <field name="pseudo">V</field>
             <field name="date_naissance" eval="(DateTime.today() - relativedelta(years=27)).strftime('%Y-%m-%d')"/>
             <field name="niveau_essence_max">100</field>
+            <field name="image_client" type="base64" file="cyberware/static/img/v.jpg"/>
         </record>
 
         <record id="demo_client_david" model="cyberware.client">
@@ -14,13 +15,16 @@
             <field name="pseudo">Edgerunner</field>
             <field name="date_naissance" eval="(DateTime.today() - relativedelta(years=18)).strftime('%Y-%m-%d')"/>
             <field name="niveau_essence_max">80</field>
+            <field name="image_client" type="base64" file="cyberware/static/img/david.jpg"/>
         </record>
 
         <record id="demo_client_smasher" model="cyberware.client">
             <field name="nom_client">Adam Smasher</field>
             <field name="pseudo">Le Boogeyman</field>
             <field name="date_naissance" eval="(DateTime.today() - relativedelta(years=80)).strftime('%Y-%m-%d')"/>
-            <field name="niveau_essence_max">10</field> </record>
+            <field name="niveau_essence_max">10</field>
+            <field name="image_client" type="base64" file="cyberware/static/img/smasher.jpg"/>
+        </record>
 
     </data>
 </odoo>
