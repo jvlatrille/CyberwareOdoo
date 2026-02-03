@@ -49,7 +49,7 @@ class CyberwareImplantation(models.Model):
         default="planifie",
     )
 
-    # Champs related pour la consigne (vue avec champ related)
+    # Champs related
     prix_implant = fields.Float(
         "Prix implant (€)",
         related="implant_id.prix_euro",
@@ -66,8 +66,8 @@ class CyberwareImplantation(models.Model):
         store=False,
     )
 
-    # Contrôle métier : ne pas dépasser l'essence max du client
     @api.constrains("client_id", "implant_id")
+    """Vérifie que l'implantation ne dépasse pas la contrainte d'essence du client."""
     def _check_contrainte_essence(self):
         for intervention in self:
             if not intervention.client_id or not intervention.implant_id:

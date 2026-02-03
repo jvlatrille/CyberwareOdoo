@@ -4,10 +4,10 @@ from odoo import models, fields
 class ResPartner(models.Model):
     _inherit = 'res.partner'  # On étend le modèle existant
 
-    # On ajoute nos champs spécifiques
+    # Ajout du champ spécifique
     is_charcudoc = fields.Boolean(string="Est un Charcudoc", default=False)
     
-    # Optionnel : Une spécialité pour le RP
+    # Avec une spécialité (a selecionner)
     charcudoc_speciality = fields.Selection([
         ('generalist', 'Généraliste'),
         ('implants', 'Implants Militaires'),
